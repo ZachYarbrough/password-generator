@@ -3,7 +3,6 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
   var charCount = prompt('How many characters do you want in your password? (8 - 128)');
-
   if(parseInt(charCount) < 8) {
     alert('Password must contain more than 8 characters.');
     generatePassword();
@@ -15,17 +14,19 @@ function generatePassword() {
     var includeUpperCase = confirm('Do you want to include upper case letters in your password?');
     var includeNumbers = confirm('Do you want to include numbers in your password?');
     var includeSpecial = confirm('Do you want to include special characters in your password?');
+  } else if(charCount === null) {
+    return;
   } else {
     alert('You need to type a number for the password length.');
-    generatePassword();
+    return generatePassword();
   }
 
   var newPassword = '';
   var newCharArray = '';
   var lowerCaseChar = 'abcdefghijklmnopqrstuvwxyz';
-  var upperCaseChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  var upperCaseChar = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   var numbers = '1234567890';
-  var specialCases = '!"#$%&${}()*+,-./:;<=>?@[\]^_`{|}~'
+  var specialCases = '!"#$%&${}()*+,-./:;<=>?@[\]^_`{|}~';
 
   if(includeLowerCase){
     newCharArray += lowerCaseChar;
@@ -41,10 +42,8 @@ function generatePassword() {
   }
   if(newCharArray === '') {
     alert('You need to select at least one of the prompts!');
-    generatePassword();
+    return generatePassword();
   }
-
-  console.log(newCharArray);
 
   for(var i = 0; i < charCount; i++) {
     newPassword += newCharArray.charAt(Math.floor(Math.random() * newCharArray.length));
@@ -58,8 +57,9 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+  if(password !== undefined) {
   passwordText.value = password;
-  passwordText.textContent = password;
+  }
 }
 
 // Add event listener to generate button
