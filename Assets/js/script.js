@@ -5,10 +5,10 @@ function generatePassword() {
   var charCount = prompt('How many characters do you want in your password? (8 - 128)');
   if(parseInt(charCount) < 8) {
     alert('Password must contain more than 8 characters.');
-    generatePassword();
+    return generatePassword();
   } else if(parseInt(charCount) > 128){
     alert('Password must contain less than 128 characters.');
-    generatePassword();
+    return generatePassword();
   } else if(parseInt(charCount) <= 128 && parseInt(charCount) >= 8) {
     var includeLowerCase = confirm('Do you want to include lower case letters in your password?');
     var includeUpperCase = confirm('Do you want to include upper case letters in your password?');
