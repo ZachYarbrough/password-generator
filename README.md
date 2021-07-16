@@ -8,4 +8,4 @@ https://zachyarbrough.github.io/password-generator/
 
 ## Screenshot
 
-![password generator screenshot](./Assets/generate-password.png)
+![password generator screenshot](assets/images/generate-password.png)
